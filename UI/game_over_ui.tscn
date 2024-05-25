@@ -1,0 +1,218 @@
+[gd_scene load_steps=11 format=3 uid="uid://bbg4f2ygqg7yq"]
+
+[ext_resource type="Script" path="res://UI/game_over_ui.gd" id="1_8k2hm"]
+[ext_resource type="Texture2D" uid="uid://31tnnew8thjb" path="res://asset/UI/Ribbons/Ribbon_Red_3Slides.png" id="1_q7xds"]
+[ext_resource type="Texture2D" uid="uid://f8p33rprahu6" path="res://asset/UI/Banners/Banner_Horizontal.png" id="2_jht6b"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x60jr"]
+texture = ExtResource("1_q7xds")
+texture_margin_left = 64.0
+texture_margin_right = 64.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(0, 0, 192, 64)
+
+[sub_resource type="SystemFont" id="SystemFont_hc47e"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_550jn"]
+font = SubResource("SystemFont_hc47e")
+font_size = 33
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_akqut"]
+texture = ExtResource("2_jht6b")
+texture_margin_left = 45.0
+texture_margin_top = 16.0
+texture_margin_right = 41.0
+texture_margin_bottom = 43.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(20.255, 47, 148.745, 125)
+
+[sub_resource type="Animation" id="Animation_6yfb5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.262745)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(386, 459)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TopPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(434, 49.03)]
+}
+
+[sub_resource type="Animation" id="Animation_8wqc2"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.717647)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(386, 651), Vector2(386, 459)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TopPanel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(434, -90), Vector2(434, 49.03)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_odoim"]
+_data = {
+"RESET": SubResource("Animation_6yfb5"),
+"default": SubResource("Animation_8wqc2")
+}
+
+[node name="GameOverUI" type="CanvasLayer"]
+script = ExtResource("1_8k2hm")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.262745)
+
+[node name="TopPanel" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 434.0
+offset_top = 49.03
+offset_right = 718.0
+offset_bottom = 141.03
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_x60jr")
+
+[node name="GameOverLabel" type="Label" parent="TopPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -74.0
+offset_top = -31.03
+offset_right = 70.0
+offset_bottom = 9.97002
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_550jn")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 386.0
+offset_top = 459.0
+offset_right = 766.0
+offset_bottom = 648.001
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxTexture_akqut")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 38
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 38
+theme_override_constants/margin_bottom = 39
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 17
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Time:"
+label_settings = SubResource("LabelSettings_550jn")
+
+[node name="TimeLabel" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_550jn")
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Defeats:
+"
+label_settings = SubResource("LabelSettings_550jn")
+
+[node name="MonsterCount" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "0000
+"
+label_settings = SubResource("LabelSettings_550jn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_odoim")
+}
+autoplay = "default"

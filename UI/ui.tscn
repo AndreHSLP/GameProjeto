@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=3 uid="uid://bxxu54r6beit3"]
+
+[ext_resource type="Script" path="res://UI/UI.gd" id="1_scwyk"]
+[ext_resource type="Texture2D" uid="uid://f8p33rprahu6" path="res://asset/UI/Banners/Banner_Horizontal.png" id="2_r0ynx"]
+[ext_resource type="Texture2D" uid="uid://dntesi1hpr7sg" path="res://asset/Resources/Resources/G_Idle.png" id="3_4s2fp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ljec0"]
+texture = ExtResource("2_r0ynx")
+texture_margin_left = 32.2314
+texture_margin_top = 16.0
+texture_margin_right = 36.0483
+texture_margin_bottom = 45.9374
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(32, 48, 128, 124.006)
+
+[sub_resource type="SystemFont" id="SystemFont_lmcxq"]
+font_names = PackedStringArray("Impact")
+subpixel_positioning = 0
+multichannel_signed_distance_field = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_dvqs5"]
+font = SubResource("SystemFont_lmcxq")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fn607"]
+load_path = "res://.godot/imported/M_Idle.png-a323a7b66dce73cefef2e58089286f11.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra2re"]
+atlas = SubResource("CompressedTexture2D_fn607")
+region = Rect2(40, 48, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmk2y"]
+atlas = ExtResource("3_4s2fp")
+region = Rect2(40, 48, 56, 56)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_scwyk")
+
+[node name="TimerLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -44.0
+offset_top = 14.0
+offset_right = 37.0
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "00:00"
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -218.0
+offset_top = 12.0
+offset_right = -53.0
+offset_bottom = 93.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ljec0")
+
+[node name="MeatLabel" type="Label" parent="Panel"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 80.0
+offset_top = 9.0
+offset_right = 122.0
+offset_bottom = 43.0
+text = "500"
+label_settings = SubResource("LabelSettings_dvqs5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoldLabel" type="Label" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 142.0
+offset_top = 9.0
+offset_right = 161.0
+offset_bottom = 32.0
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MeatTexture" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 4.0
+offset_right = 80.0
+offset_bottom = 44.0
+texture = SubResource("AtlasTexture_ra2re")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GoldTexture" type="TextureRect" parent="Panel"]
+visible = false
+layout_mode = 0
+offset_left = 100.0
+offset_top = -1.0
+offset_right = 140.0
+offset_bottom = 39.0
+texture = SubResource("AtlasTexture_xmk2y")
+expand_mode = 1
+stretch_mode = 4

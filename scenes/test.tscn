@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdhlwpeqx35h7"]
+
+[ext_resource type="PackedScene" uid="uid://b4drjox4vbxjx" path="res://player/Player.tscn" id="1_eq6qv"]
+[ext_resource type="PackedScene" uid="uid://bxxu54r6beit3" path="res://UI/ui.tscn" id="3_vg4t2"]
+[ext_resource type="PackedScene" uid="uid://bqkwx6xnjq2nt" path="res://item/meat.tscn" id="5_0o0cr"]
+[ext_resource type="PackedScene" uid="uid://b6jcib7iegyak" path="res://spawner/mob_spawner.tscn" id="6_7eks4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_eq6qv")]
+position = Vector2(174, 178)
+ritual_damage = 2
+ritual_interval = 15.0
+
+[node name="MobSpawner" parent="." instance=ExtResource("6_7eks4")]
+position = Vector2(569, 303)
+mobs_p_minute = 10.0
+
+[node name="UI" parent="." instance=ExtResource("3_vg4t2")]
+
+[node name="meat" parent="." instance=ExtResource("5_0o0cr")]
+position = Vector2(530, 275)

@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://bqkwx6xnjq2nt"]
+
+[ext_resource type="Texture2D" uid="uid://dr7vvrte7lyj1" path="res://asset/Resources/Resources/M_Spawn.png" id="1_d8g3m"]
+[ext_resource type="Script" path="res://item/life_regenerator.gd" id="2_oqchx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0gil"]
+atlas = ExtResource("1_d8g3m")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llj1b"]
+atlas = ExtResource("1_d8g3m")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpxwn"]
+atlas = ExtResource("1_d8g3m")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v10v"]
+atlas = ExtResource("1_d8g3m")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3teq"]
+atlas = ExtResource("1_d8g3m")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1byi"]
+atlas = ExtResource("1_d8g3m")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kt2r"]
+atlas = ExtResource("1_d8g3m")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mqg2e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0gil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llj1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpxwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v10v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3teq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x1byi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kt2r")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hnuw3"]
+radius = 32.0
+
+[node name="meat" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_mqg2e")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+offset = Vector2(0, -30)
+script = ExtResource("2_oqchx")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_hnuw3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
